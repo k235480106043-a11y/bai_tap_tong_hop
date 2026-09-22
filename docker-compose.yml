@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: my_nginx
+    ports:
+      - "8081:80"
+    restart: always
+
+  node-red:
+    image: nodered/node-red:latest
+    container_name: my_nodered
+    ports:
+      - "1880:1880"
+    restart: always
+
+  mariadb:
+    image: mariadb:latest
+    container_name: my_mariadb
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+    ports:
+      - "3306:3306"
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: my_phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mariadb
+    depends_on:
+      - mariadb
+    restart: always
+
