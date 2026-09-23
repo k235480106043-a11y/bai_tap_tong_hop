@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh Sách Sinh Viên - API Node-RED</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f6f9; }
+        h1 { color: #333; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        ul { padding-left: 20px; }
+        li { margin: 8px 0; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Quản Lý Danh Sách Sinh Viên</h1>
+        <p id="status">Đang kết nối tới API Node-RED...</p>
+        <ul id="student-list"></ul>
+    </div>
+
+    <script>
+        fetch('/api/tacke')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('status').innerText = "Trạng thái: " + data.msg;
+                let listElement = document.getElementById('student-list');
+                data.dssv.forEach(sv => {
+                    let li = document.createElement('li');
+                    li.innerHTML = `<b>Họ tên:</b> ${sv.name} &nbsp;|&nbsp; <b>Số tiền:</b> <span style="color: green;">${sv.money}</span>`;
+                    listElement.appendChild(li);
+                });
+            })
+            .catch(error => {
+                document.getElementById('status').innerText = "Lỗi khi gọi API!";
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>
