@@ -1,0 +1,6 @@
+ingress:
+  - hostname: ntngoclinh.id.vn
+    service: http://my_nginx:80
+  - hostname: web2.ntngoclinh.id.vn
+    service: http://my_nginx:80
+  - service: http_status:404

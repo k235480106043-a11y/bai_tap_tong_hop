@@ -4,10 +4,21 @@ services:
     container_name: my_nginx
     ports:
       - "8081:80"
-    volumes:
-      - ./index.html:/usr/share/nginx/html/index.html
-      - ./default.conf:/etc/nginx/conf.d/default.conf
     restart: always
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+      - ./web1:/usr/share/nginx/html/web1
+      - ./web2:/usr/share/nginx/html/web2
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: my_cloudflared
+    restart: always
+    command: tunnel --config /etc/cloudflared/config.yml run
+    environment:
+      - TUNNEL_TOKEN=eyJhIjoiZWZiMzVhMzM5MDcyOTkwNzZmYTllNGExZWI4NTFlNzAiLCJzIjoiekF5UWc0TVF0bTFvZmNncXFtQXMzeVZMVUx5UktCU3NyNmFYSnBMcXNoMD0iLCJ0IjoiYmQyNjBkNjktMjg4Zi00OTNhLWIxZTgtMzFhMDhlNjNmMjRkIn0=
+    volumes:
+      - ./config.yml:/etc/cloudflared/config.yml
 
   node-red:
     image: nodered/node-red:latest
