@@ -41,22 +41,68 @@ Logic cho web đơn giản này làm ngay trên lớp cho 59kmt (Thực hiện b
 ## 2. Các bước cài đặt:
   - Docker desktop trên windows: https://www.docker.com/products/docker-desktop/
   - Ubuntu: 
-```bash
+
 # 1. Cập nhật hệ thống và cài đặt gói phụ thuộc
 sudo apt update
 sudo apt install -y ca-certificates curl gnupg
 
 # 2. Thêm khóa GPG chính thức của Docker
 sudo install -m 0755 -d /etc/apt/keyrings
-curl -fsSL [https://download.docker.com/linux/ubuntu/gpg](https://download.docker.com/linux/ubuntu/gpg) | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
 # 3. Thêm kho lưu trữ (repository) Docker vào nguồn APT
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] [https://download.docker.com/linux/ubuntu](https://download.docker.com/linux/ubuntu) \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # 4. Cập nhật APT và cài đặt Docker Compose
 sudo apt update
 sudo apt install -y docker-compose-plugin
+
+
+## 3. Mẫu cấu trúc file docker-compose.yml tham khảo:
+1. Tạo thư mục làm việc (nên trùng tên với repo trên github)
+2. Tạo file docker-compose.yml chứa các service cần thiết (Xem file thực tế đang vận hành của dự án tại ./docker-compose.yml)
+ 
+### Cấu trúc cú pháp mẫu:
+services:
+  # 1. Tên dịch vụ (do bạn tự đặt)
+  web_app:
+    image: nginx:alpine                  
+    container_name: my_web_container     
+    restart: always                      
+    ports:
+      - "8080:80"                        
+    environment:
+      - NODE_ENV=production              
+    volumes:
+      - ./html:/usr/share/nginx/html     
+      - app_data:/var/log/nginx          
+    networks:
+      - my_network                       
+    depends_on:
+      - database                         
+
+  # 2. Dịch vụ thứ hai (ví dụ: Database)
+  database:
+    build:                              
+      context: ./db_folder
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_PASSWORD: secret_password
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - my_network
+
+# Quy hoạch Volume chung cho các container
+volumes:
+  app_data:
+  db_data:
+
+# Quy hoạch Mạng nội bộ giúp các container giao tiếp qua tên dịch vụ
+networks:
+  my_network:
+    driver: bridge
