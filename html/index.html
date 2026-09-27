@@ -3,32 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Admin - NgocLinh</title>
+    <title>Bài Tập Web - NgocLinh</title>
     <style>
-        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background: #f4f6f8; margin: 0; padding: 40px 20px; }
-        .card { max-width: 600px; margin: 0 auto; background: #fff; border: 1px solid #e1e4e8; border-radius: 8px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e1e4e8; padding-bottom: 16px; margin-bottom: 20px; }
-        h3 { margin: 0; color: #1f2328; font-size: 18px; }
-        .user-tag { background: #0969da; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 600; }
-        button { width: 100%; padding: 10px; background: #1f883d; color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
-        button:hover { background: #1a7f37; }
-        #status { margin: 12px 0 0; font-size: 13px; color: #636c76; text-align: center; }
-        #result { margin-top: 16px; border-top: 1px solid #e1e4e8; }
-        .row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f2f4; font-size: 14px; }
-        .row:last-child { border-bottom: none; }
-        .val { font-weight: 600; color: #1f883d; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f7f6; margin: 0; padding: 40px; }
+        .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); max-width: 520px; margin: 0 auto; }
+        h2 { color: #2c3e50; margin: 0 0 8px 0; text-align: center; font-size: 22px; }
+        .student { text-align: center; color: #007bff; font-weight: 600; margin-bottom: 20px; font-size: 15px; }
+        
+        .search-box { width: 100%; padding: 10px 14px; border: 1px solid #ced4da; border-radius: 8px; margin-bottom: 12px; font-size: 14px; box-sizing: border-box; display: none; }
+        button { width: 100%; background-color: #28a745; color: white; border: none; padding: 13px; border-radius: 8px; cursor: pointer; font-size: 15px; font-weight: bold; transition: 0.2s; }
+        button:hover { background-color: #218838; }
+        
+        #status { margin-top: 15px; color: #6c757d; font-size: 14px; text-align: center; }
+        #result { margin-top: 10px; }
+        .item { background: #f8f9fa; border: 1px solid #e9ecef; margin: 8px 0; padding: 12px 18px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .name { font-weight: bold; color: #333; }
+        .money { color: #28a745; font-weight: bold; }
+        .total-box { display: none; justify-content: space-between; margin-top: 15px; padding: 12px 18px; background: #e8f5e9; border-radius: 8px; font-weight: bold; color: #1b5e20; }
     </style>
 </head>
 <body>
     <div class="card">
-        <div class="header">
-            <h3>Hệ thống Quản lý API</h3>
-            <span class="user-tag">NgocLinh</span>
-        </div>
-        <button onclick="loadData()">Tải dữ liệu API (/api/tacke)</button>
+        <h2>Bài Tập Web - Kết Nối API</h2>
+        <div class="student">Sinh viên thực hiện: NgocLinh</div>
+        
+        <button onclick="loadData()">Lấy Dữ Liệu API (/api/tacke)</button>
         <div id="status"></div>
+        
+        <input type="text" id="searchInput" class="search-box" placeholder="Tìm kiếm tên..." onkeyup="filterData()">
         <div id="result"></div>
+        <div id="totalBox" class="total-box">
+            <span>TỔNG CỘNG:</span>
+            <span id="totalMoney">0 VNĐ</span>
+        </div>
     </div>
     <script src="app_main.js"></script>
 </body>
