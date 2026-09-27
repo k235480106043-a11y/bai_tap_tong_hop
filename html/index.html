@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - NgocLinh</title>
+    <title>Web Admin - NgocLinh</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef2f5; margin: 0; padding: 40px; }
-        .container { max-width: 600px; background: #fff; margin: 0 auto; border-radius: 12px; padding: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-        h2 { color: #1a252f; text-align: center; margin-bottom: 5px; }
-        .author { text-align: center; font-weight: 600; color: #0066cc; margin-bottom: 25px; }
-        .btn-call { display: block; width: 100%; padding: 14px; background: #28a745; color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .btn-call:hover { background: #218838; }
-        .result-box { margin-top: 20px; background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 8px; padding: 15px; }
-        .item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #ddd; }
-        .item:last-child { border-bottom: none; }
+        * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        body { background: #f4f6f8; margin: 0; padding: 40px 20px; }
+        .card { max-width: 600px; margin: 0 auto; background: #fff; border: 1px solid #e1e4e8; border-radius: 8px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #e1e4e8; padding-bottom: 16px; margin-bottom: 20px; }
+        h3 { margin: 0; color: #1f2328; font-size: 18px; }
+        .user-tag { background: #0969da; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 13px; font-weight: 600; }
+        button { width: 100%; padding: 10px; background: #1f883d; color: #fff; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+        button:hover { background: #1a7f37; }
+        #status { margin: 12px 0 0; font-size: 13px; color: #636c76; text-align: center; }
+        #result { margin-top: 16px; border-top: 1px solid #e1e4e8; }
+        .row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f2f4; font-size: 14px; }
+        .row:last-child { border-bottom: none; }
+        .val { font-weight: 600; color: #1f883d; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>HỆ THỐNG QUẢN LÝ DỮ LIỆU</h2>
-        <div class="author">Thực hiện: Nguyễn Thị Ngọc Linh</div>
-        <button class="btn-call" onclick="loadData()">Tải dữ liệu từ API Node-RED</button>
-        <div id="status" style="margin-top: 15px; text-align: center; color: #6c757d;"></div>
-        <div id="result" class="result-box" style="display:none;"></div>
+    <div class="card">
+        <div class="header">
+            <h3>Hệ thống Quản lý API</h3>
+            <span class="user-tag">NgocLinh</span>
+        </div>
+        <button onclick="loadData()">Tải dữ liệu API (/api/tacke)</button>
+        <div id="status"></div>
+        <div id="result"></div>
     </div>
     <script src="app_main.js"></script>
 </body>
