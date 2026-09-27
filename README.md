@@ -1,6 +1,3 @@
-cd ~/bai_tap_web
-
-cat << 'EOF' > README.md
 # WEB DÙNG COOKIE ĐỂ LOGIN VÀ DUY TRÌ LOGINED - NGOCLINH PROJECT
 
 Logic cho web đơn giản này làm ngay trên lớp cho 59kmt (Thực hiện bởi: Nguyễn Thị Ngọc Linh): 
