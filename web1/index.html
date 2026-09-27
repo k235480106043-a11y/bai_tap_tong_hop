@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Sinh Viên K59KMT.K01</title>
+    <style>
+        /* CSS Giao diện hiện đại */
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body {
+            margin: 0; padding: 0;
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #74ebd5, #9face6); /* Nền Gradient */
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            width: 100%; max-width: 400px;
+            text-align: center;
+        }
+        h2 { color: #333; font-size: 24px; margin-bottom: 5px; }
+        .subtitle { color: #666; font-size: 14px; margin-bottom: 25px; }
+        input {
+            width: 100%; padding: 12px 15px; margin: 10px 0;
+            border: 1px solid #ddd; border-radius: 8px;
+            outline: none; transition: 0.3s; font-size: 15px;
+        }
+        input:focus { border-color: #9face6; box-shadow: 0 0 8px rgba(159, 172, 230, 0.5); }
+        button {
+            width: 100%; padding: 12px; margin-top: 15px;
+            background: #4776E6; color: white;
+            border: none; border-radius: 8px;
+            font-size: 16px; font-weight: bold;
+            cursor: pointer; transition: 0.3s;
+        }
+        button:hover { background: #3b5bdb; transform: translateY(-2px); }
+        #loginMsg { color: #e74c3c; margin-top: 15px; font-size: 14px; font-weight: 500; }
+        .hidden { display: none !important; }
+        
+        /* Giao diện trang bí mật */
+        #secretSection { text-align: left; }
+        ul { padding-left: 20px; color: #444; line-height: 1.8; font-size: 15px; }
+        .btn-logout { background: #e74c3c; }
+        .btn-logout:hover { background: #c0392b; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- FORM ĐĂNG NHẬP -->
+        <div id="loginSection">
+            <h2>Đăng Nhập Hệ Thống</h2>
+            <div class="subtitle">Quản lý danh sách sinh viên K59KMT.K01</div>
+            
+            <input type="text" id="uid" placeholder="Tài khoản (UID)">
+            <input type="password" id="pwd" placeholder="Mật khẩu">
+            <button onclick="login()">Đăng Nhập</button>
+            <p id="loginMsg"></p>
+        </div>
+
+        <!-- THÔNG TIN MẬT (Chỉ hiện khi logined) -->
+        <div id="secretSection" class="hidden">
+            <h2 style="color: #27ae60; text-align: center;">🎉 Đăng nhập thành công!</h2>
+            <p><strong>Danh sách sinh viên nhóm 4:</strong></p>
+            <ul>
+                <li>Nguyễn Đăng Thịnh</li>
+                <li>Nguyễn Văn Sang</li>
+                <li>Nguyễn Trung Kiên</li>
+                <li>Trần Hoàng Xuân Vũ</li>
+            </ul>
+            <button class="btn-logout" onclick="logout()">Đăng Xuất</button>
+        </div>
+    </div>
+
+    <!-- Gọi file logic -->
+    <script src="app.js"></script>
+</body>
+</html>

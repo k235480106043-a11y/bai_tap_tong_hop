@@ -1,0 +1,76 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "3e2428d8dec3df33",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-node-mysql": "3.0.3"
+        }
+    },
+    {
+        "id": "1e6b922199694cbd",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "my_mariadb",
+        "port": "3306",
+        "db": "quanly_sv",
+        "tz": "",
+        "charset": "UTF8"
+    },
+    {
+        "id": "c772898bc7b5a793",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "/api/tacke",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 280,
+        "wires": [
+            [
+                "fd02ddd80e872abe"
+            ]
+        ]
+    },
+    {
+        "id": "fd02ddd80e872abe",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 1",
+        "func": "msg.payload = {\n    \"ok\": 1,\n    \"msg\": \"thành công\",\n    \"student_info\": \"Bài làm của Sinh viên: NgocLinh\",\n    \"dssv\": [\n        {\"name\": \"NgocLinh\", \"money\": 999},\n        {\"name\": \"Cốp\", \"money\": 123},\n        {\"name\": \"David\", \"money\": 456}\n    ]\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 280,
+        "wires": [
+            [
+                "5375a8467bfe07a2"
+            ]
+        ]
+    },
+    {
+        "id": "5375a8467bfe07a2",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 490,
+        "y": 280,
+        "wires": []
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "id": "4e75d8e8cb5a168f",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 1",
+        "func": "let taikhoan = msg.payload.uid;\nlet matkhau = msg.payload.pwd;\nmsg.topic = `SELECT * FROM users WHERE username = '${taikhoan}' AND password = '${matkhau}'`;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 320,
+        "wires": [
+            [
+                "760791a0bed504fd"
+            ]
+        ]
+    }
+]
