@@ -53,7 +53,8 @@ Flow trong Node-RED gồm 3 node nối tiếp nhau:
 2. **`function 1`**: tạo dữ liệu JSON cần trả về.
 3. **`http`** (node `http response`): gửi kết quả JSON về cho trình duyệt.
 
-![Luồng Node-RED xử lý API /api/tacke](./images/nodered-flow.png)
+<img width="1917" height="1078" alt="nodered" src="https://github.com/user-attachments/assets/1a8084e6-6d3e-4b76-b68f-f6309589047d" />
+
 
 *Hình 1: Flow trong Node-RED (truy cập tại `localhost:1880`) gồm `http in` → `function` → `http response`, tạo ra API `/api/tacke`.*
 
@@ -83,7 +84,8 @@ Giao diện gồm `./html/index.html` và `./html/app_main.js`, có các chức 
 - Tìm kiếm (lọc) theo tên.
 - Tự động tính dòng **Tổng cộng**.
 
-![Giao diện web gọi API /api/tacke](./images/web-giao-dien.png)
+<img width="1917" height="1078" alt="web" src="https://github.com/user-attachments/assets/6a89587e-6c76-403a-aa8f-16555094abf5" />
+
 
 *Hình 2: Trang web hiển thị danh sách 5 sinh viên kèm số tiền, có ô tìm kiếm theo tên và dòng tổng cộng tự động tính (999 + 123 + 456 + 650 + 820 = 3048 VNĐ).*
 
